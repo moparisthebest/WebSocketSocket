@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ WebSocketSocket implements a custom java.net.Socket over top of a
+  ~ WebSocket, and also a server component that accepts a WebSocket
+  ~ connection and connects to a host/port.
+  ~ Copyright (C) 2016 Travis Burtrum (moparisthebest)
+  ~
+  ~ This library is free software; you can redistribute it and/or
+  ~ modify it under the terms of the GNU Lesser General Public
+  ~ License as published by the Free Software Foundation; either
+  ~ version 2.1 of the License, or (at your option) any later version.
+  ~
+  ~ This library is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this library; if not, write to the Free Software
+  ~ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.moparisthebest.websocket</groupId>
+    <artifactId>websocket</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>websocket</name>
+    <description>
+        WebSocketSocket implements a custom java.net.Socket over top of a
+        WebSocket, and also a server component that accepts a WebSocket
+        connection and connects to a host/port.
+    </description>
+    <url>https://github.com/moparisthebest/WebSocketSocket</url>
+    <organization>
+        <name>moparisthebest.com</name>
+        <url>http://www.moparisthebest.com</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>moparisthebest</id>
+            <name>Travis Burtrum</name>
+            <email>admin@moparisthebest.com</email>
+            <url>http://www.moparisthebest.com/</url>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/moparisthebest/WebSocketSocket.git</connection>
+        <developerConnection>scm:git:https://github.com/moparisthebest/WebSocketSocket.git</developerConnection>
+        <url>https://github.com/moparisthebest/WebSocketSocket</url>
+    </scm>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+        </license>
+    </licenses>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.test.skip>true</maven.test.skip>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <pushChanges>false</pushChanges>
+        <localCheckout>true</localCheckout>
+        <maven.compiler.argument>
+            -Xlint:unchecked,deprecation,fallthrough,finally,cast,dep-ann,empty,overrides
+        </maven.compiler.argument>
+        <grizzly.version>2.3.27</grizzly.version>
+    </properties>
+    <modules>
+        <module>server</module>
+        <module>client</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <debug>false</debug>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.2</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
